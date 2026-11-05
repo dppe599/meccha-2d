@@ -1,0 +1,48 @@
+MECCHA 2D — VERSÃO MULTIPLAYER EM REDE
+======================================
+
+RECURSOS
+- Salas com código e sincronização por WebSocket.
+- Multiplayer entre dispositivos na mesma rede local (Wi-Fi/roteador).
+- Também aceita um endereço WebSocket público (ws:// ou wss://) para partidas entre casas diferentes, desde que você hospede o servidor publicamente.
+- Personagem humanoide branco, liso e sem rosto, inspirado na silhueta do jogo original.
+- Pintura livre no corpo com pincel, cor personalizada, tamanho ajustável e borracha.
+- Conta-gotas para capturar a cor de pisos e móveis do cenário.
+- 3 mapas prontos + editor de mapas.
+- Salvar, importar e exportar mapas personalizados.
+- Até 10 jogadores por sala.
+- Servidor próprio em Node.js, sem bibliotecas externas.
+
+JOGAR NA MESMA REDE WI-FI
+1. Extraia TODOS os arquivos desta pasta.
+2. Instale Node.js LTS no computador que vai hospedar a sala.
+3. Dê dois cliques em INICIAR_SERVIDOR.bat.
+4. O terminal mostrará endereços como http://192.168.0.15:3000.
+5. No computador anfitrião, abra http://localhost:3000.
+6. Nos outros dispositivos conectados ao MESMO Wi-Fi, abra o endereço de rede mostrado no terminal (por exemplo, http://192.168.0.15:3000).
+7. O anfitrião escolhe o mapa e clica em CRIAR SALA. Os amigos digitam o código e clicam em ENTRAR.
+8. O anfitrião inicia a partida quando todos estiverem na sala.
+
+JOGAR DE CASAS DIFERENTES
+O servidor precisa estar hospedado em um serviço público que aceite conexões WebSocket. Hospede a pasta inteira com o comando `node server.js` (o serviço deve encaminhar a porta indicada pela variável PORT e permitir WebSocket). Depois, cada jogador abre o endereço HTTPS público do jogo; o campo de servidor será preenchido automaticamente com WSS. Também é possível informar manualmente o endereço público ws:// ou wss://. A hospedagem pública não está incluída neste pacote.
+
+IMPORTANTE
+- Não feche a janela do servidor durante a partida.
+- Se o Windows mostrar o Firewall, permita o acesso do Node.js em redes privadas.
+- Node.js é necessário apenas no computador/serviço que hospeda o servidor; os outros jogadores só precisam de navegador.
+
+CONTROLES
+- WASD ou setas: movimentar.
+- Espaço: ficar imóvel / voltar a se mexer durante a preparação.
+- Mouse ou toque no quadro do personagem: pintar.
+- Conta-gotas + clique no cenário: capturar a cor de um piso ou móvel.
+- Clique no personagem com o buscador: tentar capturar um escondedor próximo.
+
+ARQUIVOS
+- index.html: jogo e interface servidos pelo servidor.
+- server.js: servidor multiplayer.
+- package.json: comando `npm start` (opcional).
+- INICIAR_SERVIDOR.bat: inicializador para Windows.
+- meccha_chameleon_2d.html: cópia avulsa da interface.
+
+Este é um protótipo de fã independente, não oficial e sem conexão com os servidores do jogo original.
